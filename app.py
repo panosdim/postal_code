@@ -79,12 +79,12 @@ def postal_code():
                         st_end = r.split('-')
                         if st_end[-1] == 'ΤΕΛ':
                             if int(number) >= int(st_end[0]):
-                                return jsonify({'ΤΚ': a['ΤΚ']})
+                                return jsonify({'TK': a['ΤΚ']})
                         else:
                             if int(st_end[0]) <= int(number) <= int(st_end[1]):
-                                return jsonify({'ΤΚ': a['ΤΚ']})
+                                return jsonify({'TK': a['ΤΚ']})
             else:
-                return jsonify({'ΤΚ': pc[0]['ΤΚ']})
+                return jsonify({'TK': pc[0]['ΤΚ']})
         # Check if city is in ΘΕΣΣΑΛΟΝΙΚΗ area
         elif query_db('select * from `ΤΚ-ΘΕΣΣΑΛΟΝΙΚΗΣ` where `ΠΟΛΗ` like ?',
                       ['%' + city + '%'], one=True):
@@ -98,12 +98,12 @@ def postal_code():
                         st_end = r.split('-')
                         if st_end[-1] == 'ΤΕΛ':
                             if int(number) >= int(st_end[0]):
-                                return jsonify({'ΤΚ': a['ΤΚ']})
+                                return jsonify({'TK': a['ΤΚ']})
                         else:
                             if int(st_end[0]) <= int(number) <= int(st_end[1]):
-                                return jsonify({'ΤΚ': a['ΤΚ']})
+                                return jsonify({'TK': a['ΤΚ']})
             else:
-                return jsonify({'ΤΚ': pc[0]['ΤΚ']})
+                return jsonify({'TK': pc[0]['ΤΚ']})
         # Search for postal code in ΛΟΙΠΗ_ΕΛΛΑΣ
         else:
             if query_db('select * from `ΤΚ-ΛΟΙΠΗ_ΕΛΛΑΣ` where `ΝΟΜΟΣ` like ?',
@@ -129,16 +129,16 @@ def postal_code():
                         st_end = r.split('-')
                         if st_end[-1] == 'ΤΕΛ':
                             if int(number) >= int(st_end[0]):
-                                return jsonify({'ΤΚ': a['ΤΚ']})
+                                return jsonify({'TK': a['ΤΚ']})
                         else:
                             if int(st_end[0]) <= int(number) <= int(st_end[1]):
-                                return jsonify({'ΤΚ': a['ΤΚ']})
+                                return jsonify({'TK': a['ΤΚ']})
             elif len(pc) == 0:
-                return jsonify({'ΤΚ': 'NOT FOUND'})
+                return jsonify({'TK': 'NOT FOUND'})
             else:
-                return jsonify({'ΤΚ': pc[0]['ΤΚ']})
+                return jsonify({'TK': pc[0]['ΤΚ']})
 
-        return jsonify({'ΤΚ': 'NOT FOUND'})
+        return jsonify({'TK': 'NOT FOUND'})
     else:
         return abort(422)
 
