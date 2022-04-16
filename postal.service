@@ -1,0 +1,13 @@
+[Unit]
+Description=Script to start postal REST API server
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+User=root
+WorkingDirectory=/opt/postal
+ExecStart=/usr/bin/env gunicorn app:app
+
+[Install]
+WantedBy=multi-user.target
