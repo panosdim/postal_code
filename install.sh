@@ -10,7 +10,6 @@ is_service_exists() {
     else
         return 1
     fi
-    unset x
 }
 
 INSTALL_PATH=/opt/postal
