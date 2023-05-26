@@ -13,6 +13,7 @@ is_service_exists() {
 }
 
 INSTALL_PATH=/opt/postal
+NGINX_CONF_PATH=/etc/nginx/conf.d
 
 # Check if needed files exist
 if [ -f postal.service ] && [ -f app.py ] && [ -f data.sqlite ]; then
@@ -20,7 +21,6 @@ if [ -f postal.service ] && [ -f app.py ] && [ -f data.sqlite ]; then
     if is_service_exists 'postal.service'; then
         systemctl stop movies.service
         cp app.py $INSTALL_PATH
-        
         systemctl start postal.service
     else
         mkdir -p $INSTALL_PATH
@@ -29,6 +29,8 @@ if [ -f postal.service ] && [ -f app.py ] && [ -f data.sqlite ]; then
         cp postal.service /usr/lib/systemd/system
         systemctl start postal.service
         systemctl enable postal.service
+        cp postal.conf $NGINX_CONF_PATH
+        nginx -s reload
     fi
 else
     echo "Not all needed files found. Installation failed."
