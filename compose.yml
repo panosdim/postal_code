@@ -1,0 +1,7 @@
+services:
+  postal-code:
+    image: ghcr.io/panosdim/postal_code:v1.0.0
+    container_name: postal_code
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
