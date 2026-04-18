@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
 COPY app.py .
+COPY index.html .
 COPY data.sqlite .
 
 # Expose the port the app runs on

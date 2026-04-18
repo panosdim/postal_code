@@ -3,7 +3,7 @@ import sqlite3
 import unicodedata
 from typing import Any, Dict, List, Optional, Tuple, Union, cast
 
-from flask import Flask, g, jsonify, request
+from flask import Flask, g, jsonify, request, send_from_directory
 from werkzeug.exceptions import abort
 
 DATABASE = "data.sqlite"
@@ -45,7 +45,12 @@ def missing_parameter(error: Any) -> Tuple[Any, int]:
     return jsonify({"message": "missing address parameter"}), 422
 
 
-@app.route("/", methods=["GET"])
+@app.route("/")
+def index():
+    return send_from_directory(".", "index.html")
+
+
+@app.route("/search", methods=["GET"])
 def postal_code():
     query_parameters = request.args
     address = query_parameters.get("address")
