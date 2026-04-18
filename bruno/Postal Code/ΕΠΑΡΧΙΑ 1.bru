@@ -1,0 +1,25 @@
+meta {
+  name: ΕΠΑΡΧΙΑ 1
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{url}}?address=ζωγραφου 5 Ροδοδαφνη ΑΙΓΙΟ
+  body: none
+  auth: inherit
+}
+
+params:query {
+  address: ζωγραφου 5 Ροδοδαφνη ΑΙΓΙΟ
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}
+
+settings {
+  encodeUrl: true
+}

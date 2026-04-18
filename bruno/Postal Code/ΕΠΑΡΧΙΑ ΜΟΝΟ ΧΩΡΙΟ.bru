@@ -1,0 +1,25 @@
+meta {
+  name: ΕΠΑΡΧΙΑ ΜΟΝΟ ΧΩΡΙΟ
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{url}}?address=ΚΡΕΣΤΕΝΑ ΗΛΕΙΑΣ
+  body: none
+  auth: inherit
+}
+
+params:query {
+  address: ΚΡΕΣΤΕΝΑ ΗΛΕΙΑΣ
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}
+
+settings {
+  encodeUrl: true
+}

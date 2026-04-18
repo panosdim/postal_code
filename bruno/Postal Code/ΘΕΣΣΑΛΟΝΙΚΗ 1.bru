@@ -1,0 +1,25 @@
+meta {
+  name: ΘΕΣΣΑΛΟΝΙΚΗ 1
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{url}}?address=ΒΟΥΛΓΑΡΗ 44 Θεσσαλονίκη
+  body: none
+  auth: inherit
+}
+
+params:query {
+  address: ΒΟΥΛΓΑΡΗ 44 Θεσσαλονίκη
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}
+
+settings {
+  encodeUrl: true
+}

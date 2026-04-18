@@ -1,0 +1,25 @@
+meta {
+  name: ΑΘΗΝΑ 3
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{url}}?address=Ζωγραφου 4 Αθηνα
+  body: none
+  auth: inherit
+}
+
+params:query {
+  address: Ζωγραφου 4 Αθηνα
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}
+
+settings {
+  encodeUrl: true
+}

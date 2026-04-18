@@ -1,0 +1,25 @@
+meta {
+  name: ΘΕΣΣΑΛΟΝΙΚΗ
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{url}}?address=ΚΑΛΥΜΝΟΥ Θεσσαλονίκη
+  body: none
+  auth: inherit
+}
+
+params:query {
+  address: ΚΑΛΥΜΝΟΥ Θεσσαλονίκη
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}
+
+settings {
+  encodeUrl: true
+}

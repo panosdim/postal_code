@@ -1,0 +1,21 @@
+meta {
+  name: Address parameter is missing
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{url}}
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  test("Status code is 422", function () {
+      expect(res.getStatus()).to.equal(422);
+  });
+}
+
+settings {
+  encodeUrl: true
+}

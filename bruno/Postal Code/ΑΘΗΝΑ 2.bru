@@ -1,0 +1,25 @@
+meta {
+  name: ΑΘΗΝΑ 2
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{url}}?address=Αργους 27 Αθηνα
+  body: none
+  auth: inherit
+}
+
+params:query {
+  address: Αργους 27 Αθηνα
+}
+
+script:post-response {
+  test("Status code is 200", function () {
+      expect(res.getStatus()).to.equal(200);
+  });
+}
+
+settings {
+  encodeUrl: true
+}
